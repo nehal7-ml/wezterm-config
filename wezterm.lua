@@ -1,8 +1,10 @@
 local Config = require('config')
-
+local list = require('plugins.init')
 require('utils.backdrops')
    -- :set_focus('#000000')
-   -- :set_images_dir(require('wezterm').home_dir .. '/Pictures/Wallpapers/')
+   :set_images_dir(
+      require('wezterm').home_dir .. '/.config/wezterm/backdrops'
+   )
    :set_images()
    :random()
 
@@ -10,6 +12,16 @@ require('events.left-status').setup()
 require('events.right-status').setup({ date_format = '%a %H:%M:%S' })
 require('events.tab-title').setup({ hide_active_tab_unseen = false, unseen_icon = 'circle' })
 require('events.new-tab-button').setup()
+
+-- local wezterm = require('wezterm')
+
+-- for _, plugin in ipairs(list) do
+--    local a_plugin = wezterm.plugin.require(plugin.name)
+--    local config = wezterm.config_builder()
+--    local my_config = plugin.config
+--    print(a_plugin, plugin)
+--    a_plugin.apply_to_config(config, my_config)
+-- end
 
 return Config:init()
    :append(require('config.appearance'))
