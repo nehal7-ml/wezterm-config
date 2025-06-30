@@ -78,9 +78,20 @@ function BackDrops:_create_opts()
       {
          source = { File = self.images[self.current_idx] },
          horizontal_align = 'Center',
+         opacity = 0.5,
+         hsb = {
+            hue = 1,
+            saturation = 1,
+            brightness = 0.5,
+         },
       },
       {
-         source = { Color = colors.background },
+         source = {
+            Gradient = {
+               colors = { '#161b36', '#000000' },
+               orientation = 'Vertical',
+            },
+         },
          height = '120%',
          width = '120%',
          vertical_offset = '-10%',
@@ -99,7 +110,7 @@ function BackDrops:_create_focus_opts()
          source = { Color = self.focus_color },
          height = '120%',
          width = '120%',
-         vertical_offset = '-10%',
+         vertical_offset = '-10%`',
          horizontal_offset = '-10%',
          opacity = 1,
       },
@@ -150,8 +161,6 @@ function BackDrops:_set_focus_opt(window)
    }
    window:set_config_overrides(opts)
 end
-
-
 
 ---Convert the `files` array to a table of `InputSelector` choices
 ---see: https://wezfurlong.org/wezterm/config/lua/keyassignment/InputSelector.html
